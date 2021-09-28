@@ -1,0 +1,25 @@
+.movie__block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie__list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2.25rem;
+  column-gap: 2.25rem;
+  margin-bottom: 2.25rem;
+}
+
+@media only screen and (max-width: 780px) {
+  .movie__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.movie__pagination {
+  display: flex;
+  justify-content: center;
+}

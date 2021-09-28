@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  margin: auto;
+}
+.container {
+  width: 100%;
+  max-width: 63.125rem;
+  padding: 2rem 2.25rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+.header__tab {
+  display: flex;
+  justify-content: center;
+}

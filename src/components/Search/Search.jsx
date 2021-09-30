@@ -3,15 +3,17 @@ import MovieList from '../MovieList/MovieList'
 import { MovieAPI } from '../../api'
 import { Input } from 'antd'
 import useDebounce from '../utils/useDebounce'
+import mapper from '../utils/mapper'
 
 import './Search.css'
 
-const Search = () => {
+const Search = (props) => {
+  const { genres } = props
   const [searchValue, setSearchValue] = useState('')
   const [page, setPage] = useState(1)
   const [movieList, setMovieList] = useState([])
   const [loading, setLoading] = useState(true)
-  const [maxPageSize, setMaxPageSize] = useState(1)
+  const [totalItems, setTotalItems] = useState(1)
 
   const onChangeDebounce = useDebounce(searchValue, 250)
 
@@ -21,12 +23,12 @@ const Search = () => {
       MovieAPI.searchMovie(searchValue, page)
         .then((response) => {
           const {
-            data: { results, total_results, total_pages }
+            data: { results, total_results }
           } = response
-          console.log(total_results)
+          mapper(results, genres)
           setLoading(false)
           setMovieList(results)
-          setMaxPageSize(total_results)
+          setTotalItems(total_results)
         })
         .catch((err) => console.log(err))
     }
@@ -49,7 +51,7 @@ const Search = () => {
           page={page}
           loading={loading}
           movieList={movieList}
-          maxPageSize={maxPageSize}
+          totalItems={totalItems}
           onPageChange={onPageChange}
         />
       </div>

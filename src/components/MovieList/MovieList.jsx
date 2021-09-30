@@ -5,8 +5,8 @@ import { Pagination } from 'antd'
 import './MovieList.css'
 
 const MovieList = (props) => {
-  const { page, loading, movieList, maxPageSize, onPageChange } = props
-
+  console.log(props)
+  const { page, loading, movieList, totalItems, onPageChange } = props
   return (
     loading === false && (
       <div className="movie__block">
@@ -18,11 +18,13 @@ const MovieList = (props) => {
         <div className="movie__pagination">
           <Pagination
             current={page}
-            total={maxPageSize}
+            total={totalItems}
             onChange={onPageChange}
-            pageSize={20}
+            showTotal={false}
+            showSizeChanger={false}
+            defaultPageSize={20}
+            responsive
             showQuickJumper
-            showLessItems
           />
         </div>
       </div>

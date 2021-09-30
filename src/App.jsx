@@ -1,17 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Search from './components/Search/Search'
 import Rate from './components/Rate/Rate'
 import { Tabs } from 'antd'
 
 import 'antd/dist/antd.css'
 import './App.css'
+import { MovieAPI } from './api'
 
 const App = () => {
   const [tab, setTab] = useState('1')
-
+  const [genres, setGenres] = useState([])
   const { TabPane } = Tabs
 
   const switchTab = (activeKey) => setTab(activeKey)
+
+  useEffect(() => {
+    MovieAPI.getGenres()
+      .then((res) => {
+        const {
+          data: { genres }
+        } = res
+        setGenres(genres)
+      })
+      .catch((err) => console.log(err))
+  }, [])
 
   return (
     <div className="wrapper">
@@ -22,7 +34,7 @@ const App = () => {
             <TabPane tab="Rated" key="2"></TabPane>
           </Tabs>
         </div>
-        {tab === '1' ? <Search /> : <Rate />}
+        {tab === '1' ? <Search genres={genres} /> : <Rate genres={genres} />}
       </div>
     </div>
   )

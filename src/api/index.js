@@ -26,7 +26,7 @@ instance.interceptors.response.use(
 )
 
 export const MovieAPI = {
-  fetchTopRated(page) {
+  getTopRated(page) {
     return instance
       .get(`/movie/top_rated?api_key=${userKEY}&language=ru-Ru&page=${page}`)
       .then((response) => response)
@@ -39,13 +39,12 @@ export const MovieAPI = {
       )
       .then((response) => response)
       .catch((err) => err.response)
-  }
-}
-
-export const ImageAPI = {
-  fetchImage(id, width) {
-    return imageInstance
-      .get(`/w${width}/${id}`)
+  },
+  getGenres() {
+    return instance
+      .get(
+        `https://api.themoviedb.org/3//genre/movie/list?api_key=${userKEY}&language=en-En`
+      )
       .then((response) => response)
       .catch((err) => err.response)
   }

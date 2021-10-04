@@ -27,7 +27,6 @@ const Rate = (props) => {
       })
       .catch((err) => console.log(err))
   }, [])
-  console.log(movieList)
   return (
     <div className="rate__tab">
       <MovieList

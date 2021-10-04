@@ -5,7 +5,6 @@ import { Pagination } from 'antd'
 import './MovieList.css'
 
 const MovieList = (props) => {
-  console.log(props)
   const { page, loading, movieList, totalItems, onPageChange } = props
   return (
     loading === false && (

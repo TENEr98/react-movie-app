@@ -24,36 +24,34 @@ const MovieItem = (props) => {
           className="movie__img"
         />
       </div>
-      <div className="movie__block_content">
-        <div className="movie__title">
-          <h2 className="title">{title}</h2>
-          <div className="circle">
-            <span className="vote">{vote_average}</span>
+      <div className="movie__title">
+        <h2 className="title">{title}</h2>
+        <div className="circle">
+          <span className="vote">{vote_average}</span>
+        </div>
+      </div>
+      <div className="movie__release_content">
+        {release_date ? (
+          <span className="release_year">
+            {format(new Date(2014, 6, 2), 'MMMM dd, yyyy')}
+          </span>
+        ) : null}
+      </div>
+      <div className="movie__genre_content">
+        {genre_ids.map((el, id) => (
+          <div
+            key={`${new Date().getMilliseconds()} ${id}`}
+            className="genre_wrapper"
+          >
+            <span className="genre">{el.name}</span>
           </div>
-        </div>
-        <div className="movie__release_content">
-          {release_date ? (
-            <span className="release_year">
-              {format(new Date(2014, 6, 2), 'MMMM dd, yyyy')}
-            </span>
-          ) : null}
-        </div>
-        <div className="movie__genre_content">
-          {genre_ids.map((el, id) => (
-            <div
-              key={`${new Date().getMilliseconds()} ${id}`}
-              className="genre_wrapper"
-            >
-              <span className="genre">{el.name}</span>
-            </div>
-          ))}
-        </div>
-        <div className="movie__desc_content">
-          <p className="desc">{overview}</p>
-        </div>
-        <div className="movie__stars_content">
-          <Rate allowHalf value={popularity} count={10} />
-        </div>
+        ))}
+      </div>
+      <div className="movie__desc_content">
+        <p className="desc">{overview}</p>
+      </div>
+      <div className="movie__stars_content">
+        <Rate allowHalf value={popularity} count={10} />
       </div>
     </div>
   )

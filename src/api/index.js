@@ -1,11 +1,9 @@
 import axios from 'axios'
 
 const baseURL = import.meta.env.VITE_BASE_URL
-const imageURL = import.meta.env.VITE_IMAGE_URL
 const userKEY = import.meta.env.VITE_TOKEN_KEY
 
 const instance = axios.create({ baseURL })
-const imageInstance = axios.create({ imageURL })
 
 instance.interceptors.request.use(
   (config) => {

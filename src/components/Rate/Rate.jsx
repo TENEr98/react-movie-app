@@ -15,7 +15,7 @@ const Rate = (props) => {
   const onPageChange = (page) => setPage(page)
 
   useEffect(() => {
-    MovieAPI.getTopRated()
+    MovieAPI.getTopRated(page)
       .then((response) => {
         const {
           data: { results, total_results }
@@ -26,7 +26,8 @@ const Rate = (props) => {
         setTotalItems(total_results)
       })
       .catch((err) => console.log(err))
-  }, [])
+  }, [page])
+
   return (
     <div className="rate__tab">
       <MovieList

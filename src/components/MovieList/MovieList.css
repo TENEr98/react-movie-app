@@ -11,9 +11,17 @@
   row-gap: 2.25rem;
   column-gap: 2.25rem;
   margin-bottom: 2.25rem;
+  padding-left: 0;
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 440px) {
+  .movie__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 770px) {
   .movie__list {
     width: 100%;
     display: flex;

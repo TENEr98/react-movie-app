@@ -1,9 +1,7 @@
 .movie__item {
   width: 100%;
-  height: 300px;
+  height: auto;
   display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-template-rows: repeat(5);
   column-gap: 1.25rem;
   row-gap: 0.5rem;
   grid-template-areas:
@@ -18,13 +16,10 @@
 .movie__block_img {
   grid-area: movie__block_img;
   width: 250px;
-  height: 0;
-  position: relative;
-  padding-bottom: 120.13%;
+  height: 100%;
 }
 
 .movie__img {
-  position: absolute;
   left: 0;
   top: 0;
   height: 100%;
@@ -47,8 +42,6 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 28px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   margin: 0;
   overflow: hidden;
 }
@@ -72,6 +65,7 @@
 .movie__release_content {
   grid-area: movie__release_content;
 }
+
 .release_year {
   font-size: 12px;
   line-height: 22px;
@@ -102,7 +96,6 @@
 
 .movie__desc_content {
   grid-area: movie__desc_content;
-  width: 100%;
   height: 7.5rem;
 }
 
@@ -115,35 +108,66 @@
   background: #fff;
   position: absolute;
   margin: 0;
+  font-size: 0.75rem;
 }
 
 .movie__stars_content {
   grid-area: movie__stars_content;
+  padding-bottom: 0.5rem;
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 440px) {
   .movie__item {
-    width: 100%;
-    height: 18.75rem;
+    height: auto;
+    width: auto;
     padding: 0.5rem;
-    grid-template-columns: max-content 1fr;
     grid-template-rows: max-content max-content max-content max-content max-content;
-    gap: 0.5rem 1.25rem;
+    gap: 0.5rem 0.8125rem;
     grid-template-areas:
       'movie__block_img movie__title'
       'movie__block_img movie__release_content'
       'movie__block_img movie__genre_content'
       'movie__desc_content movie__desc_content'
-      '. movie__stars_content';
+      'movie__stars_content movie__stars_content';
   }
 
   .movie__block_img {
     grid-area: movie__block_img;
     width: 90px;
-    height: 0;
-    position: relative;
   }
+
+  .movie__genre_content {
+    grid-area: movie__genre_content;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
   .movie__title {
     padding: 0;
+    width: auto;
+  }
+
+  .title {
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    margin: 0;
+  }
+
+  .desc {
+    width: calc(100% - 30px);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    background: #fff;
+    margin: 0;
+    font-size: 0.75rem;
   }
 }

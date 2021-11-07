@@ -98,20 +98,32 @@
   width: 100%;
   min-height: 100vh;
   background-color: #f7f7f7;
-  margin: auto;
 }
+
 .container {
   width: 100%;
-  min-height: 100vh;
   max-width: 80rem;
   padding: 2rem 2.25rem;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   background-color: #ffffff;
 }
+
 .header__tab {
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (max-width: 440px) {
+  .wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+  }
+  .container {
+    padding: 0.5rem;
+    width: 100%;
+  }
 }

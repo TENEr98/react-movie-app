@@ -1,19 +1,19 @@
 import React from 'react'
 import MovieItem from '../MovieItem/MovieItem'
 import { Pagination } from 'antd'
+import Loader from '../Loader/Loader'
 
 import './MovieList.css'
 
-const MovieList = (props) => {
-  const { page, loading, movieList, totalItems, onPageChange } = props
-  return (
-    loading === false && (
-      <div className="movie__block">
-        <div className="movie__list">
-          {movieList?.map((item, idx) => (
-            <MovieItem key={idx} item={item} />
-          ))}
-        </div>
+const MovieList = ({ page, loading, movieList, totalItems, onPageChange }) => {
+  return !loading ? (
+    <div className="movie__block">
+      <ul className="movie__list">
+        {movieList?.map((item, idx) => (
+          <MovieItem key={`${idx}${item.title}`} item={item} />
+        ))}
+      </ul>
+      {page > 1 ? (
         <div className="movie__pagination">
           <Pagination
             current={page}
@@ -26,8 +26,10 @@ const MovieList = (props) => {
             showQuickJumper
           />
         </div>
-      </div>
-    )
+      ) : null}
+    </div>
+  ) : (
+    <Loader />
   )
 }
 

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import Search from './components/Search/Search'
-import Rate from './components/Rate/Rate'
-import { Tabs } from 'antd'
+import SearchTab from './components/SearchTab/SearchTab'
+import RateTab from './components/RateTab/RateTab'
+import { message, Tabs } from 'antd'
+import { MovieAPI } from './api'
 
 import 'antd/dist/antd.css'
 import './App.css'
-import { MovieAPI } from './api'
 
 const App = () => {
   const [tab, setTab] = useState('1')
@@ -22,7 +22,7 @@ const App = () => {
         } = res
         setGenres(genres)
       })
-      .catch((err) => console.log(err))
+      .catch(() => message.error('Что-то пошло не так'))
   }, [])
 
   return (
@@ -34,7 +34,7 @@ const App = () => {
             <TabPane tab="Rated" key="2"></TabPane>
           </Tabs>
         </div>
-        {tab === '1' ? <Search genres={genres} /> : <Rate genres={genres} />}
+        {tab === '1' ? <SearchTab genres={genres} /> : <RateTab />}
       </div>
     </div>
   )

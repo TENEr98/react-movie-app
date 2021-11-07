@@ -24,12 +24,6 @@ instance.interceptors.response.use(
 )
 
 export const MovieAPI = {
-  getTopRated(page) {
-    return instance
-      .get(`/movie/top_rated?api_key=${userKEY}&language=ru-Ru&page=${page}`)
-      .then((response) => response)
-      .catch((err) => err.response)
-  },
   searchMovie(searchValue, page) {
     return instance
       .get(
@@ -41,7 +35,7 @@ export const MovieAPI = {
   getGenres() {
     return instance
       .get(
-        `https://api.themoviedb.org/3//genre/movie/list?api_key=${userKEY}&language=en-En`
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${userKEY}&language=en-En`
       )
       .then((response) => response)
       .catch((err) => err.response)

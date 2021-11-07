@@ -13,9 +13,12 @@ module.exports = {
   },
   'plugins': ['react'],
   'rules': {
-    'indent': ['error', 'tab'],
-    'linebreak-style': ['error', 'windows'],
+    'indent': ['error', 2],
+    'linebreak-style': ['error', 'unix'],
     'quotes': ['error', 'single'],
-    'semi': ['error', 'never']
+    'semi': ['error', 'never'],
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 0,
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }]
   }
 }

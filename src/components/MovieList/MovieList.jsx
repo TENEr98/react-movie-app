@@ -13,7 +13,7 @@ const MovieList = ({ page, loading, movieList, totalItems, onPageChange }) => {
           <MovieItem key={`${idx}${item.title}`} item={item} />
         ))}
       </ul>
-      {page > 1 ? (
+      {totalItems / page > 1 ? (
         <div className="movie__pagination">
           <Pagination
             current={page}

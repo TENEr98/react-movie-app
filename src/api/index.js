@@ -34,9 +34,7 @@ export const MovieAPI = {
   },
   getGenres() {
     return instance
-      .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${userKEY}&language=en-En`
-      )
+      .get(`/genre/movie/list?api_key=${userKEY}&language=en-En`)
       .then((response) => response)
       .catch((err) => err.response)
   }
